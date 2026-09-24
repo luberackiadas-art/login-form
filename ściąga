@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML FORM — powtórka</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #f2f2f2;
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            scroll-margin-top: 20px;
+        }
+
+        h1, h2 {
+            color: #222;
+        }
+
+        code {
+            background: #eee;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .opis {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        input, select, textarea, button {
+            margin: 5px;
+            padding: 7px;
+        }
+
+        .kod {
+            background: #222;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        /* WYSZUKIWARKA */
+        .search-box {
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            background: white;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        #search {
+            width: 70%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        #searchButton {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+        }
+
+        #wynik {
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📚 HTML — FORMULARZE</h1>
+
+    <!-- ========================= -->
+    <!-- WYSZUKIWARKA -->
+    <!-- ========================= -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔎 Wpisz np. radio, checkbox, textarea..."
+        >
+
+        <button id="searchButton" onclick="szukaj()">
+            Szukaj
+        </button>
+
+        <div id="wynik"></div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- FORM -->
+    <!-- ========================= -->
+
+    <section id="form">
+
+        <h2>&lt;form&gt; — formularz</h2>
+
+        <p class="opis">
+            Tworzy formularz, w którym użytkownik może wprowadzać dane.
+        </p>
+
+        <div class="kod">
+&lt;form&gt;
+
+    ...
+
+&lt;/form&gt;
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- LABEL -->
+    <!-- ========================= -->
+
+    <section id="label">
+
+        <h2>&lt;label&gt; — opis pola</h2>
+
+        <p class="opis">
+            Dodaje opis do pola formularza.
+        </p>
+
+        <div class="kod">
+&lt;label for="imie"&gt;Imię:&lt;/label&gt;
+
+&lt;input type="text" id="imie"&gt;
+        </div>
+
+        <p>
+            <code>for</code> powinno odpowiadać <code>id</code> pola.
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- TEXT -->
+    <!-- ========================= -->
+
+    <section id="text">
+
+        <h2>&lt;input type="text"&gt; — tekst</h2>
+
+        <p class="opis">
+            Zwykłe pole tekstowe.
+        </p>
+
+        <div class="kod">
+&lt;input type="text"&gt;
+        </div>
+
+        <input type="text" placeholder="Wpisz tekst">
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PASSWORD -->
+    <!-- ========================= -->
+
+    <section id="password">
+
+        <h2>&lt;input type="password"&gt; — hasło</h2>
+
+        <p class="opis">
+            Pole, w którym wpisywany tekst jest ukrywany.
+        </p>
+
+        <div class="kod">
+&lt;input type="password"&gt;
+        </div>
+
+        <input type="password" placeholder="Hasło">
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- EMAIL -->
+    <!-- ========================= -->
+
+    <section id="email">
+
+        <h2>&lt;input type="email"&gt; — e-mail</h2>
+
+        <div class="kod">
+&lt;input type="email"&gt;
+        </div>
+
+        <input type="email" placeholder="email@example.com">
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- NUMBER -->
+    <!-- ========================= -->
+
+    <section id="number">
+
+        <h2>&lt;input type="number"&gt; — liczba</h2>
+
+        <div class="kod">
+&lt;input type="number" min="1" max="100"&gt;
+        </div>
+
+        <p>
+            <code>min</code> — minimalna wartość
+        </p>
+
+        <p>
+            <code>max</code> — maksymalna wartość
+        </p>
+
+        <input type="number" min="1" max="100">
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- DATE -->
+    <!-- ========================= -->
+
+    <section id="date">
+
+        <h2>&lt;input type="date"&gt; — data</h2>
+
+        <div class="kod">
+&lt;input type="date"&gt;
+        </div>
+
+        <input type="date">
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- RADIO -->
+    <!-- ========================= -->
+
+    <section id="radio">
+
+        <h2>&lt;input type="radio"&gt; — jedna opcja</h2>
+
+        <p class="opis">
+            Radio pozwala wybrać jedną opcję z grupy.
+            Elementy muszą mieć takie samo <code>name</code>.
+        </p>
+
+        <div class="kod">
+&lt;input type="radio" name="plec" value="m"&gt;
+&lt;label&gt;Mężczyzna&lt;/label&gt;
+
+&lt;input type="radio" name="plec" value="k"&gt;
+&lt;label&gt;Kobieta&lt;/label&gt;
+        </div>
+
+        <input type="radio" name="plec" value="m">
+        <label>Mężczyzna</label>
+
+        <input type="radio" name="plec" value="k">
+        <label>Kobieta</label>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- CHECKBOX -->
+    <!-- ========================= -->
+
+    <section id="checkbox">
+
+        <h2>&lt;input type="checkbox"&gt; — wiele opcji</h2>
+
+        <p class="opis">
+            Checkbox pozwala zaznaczyć kilka opcji.
+        </p>
+
+        <div class="kod">
+&lt;input type="checkbox"&gt;
+        </div>
+
+        <input type="checkbox" id="sport">
+        <label for="sport">Sport</label>
+
+        <input type="checkbox" id="gry">
+        <label for="gry">Gry</label>
+
+        <input type="checkbox" id="muzyka">
+        <label for="muzyka">Muzyka</label>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- SELECT -->
+    <!-- ========================= -->
+
+    <section id="select">
+
+        <h2>&lt;select&gt; + &lt;option&gt; — lista</h2>
+
+        <p class="opis">
+            select tworzy listę rozwijaną,
+            a option tworzy pojedynczą opcję.
+        </p>
+
+        <div class="kod">
+&lt;select&gt;
+
+    &lt;option&gt;Polska&lt;/option&gt;
+    &lt;option&gt;Niemcy&lt;/option&gt;
+    &lt;option&gt;Francja&lt;/option&gt;
+
+&lt;/select&gt;
+        </div>
+
+        <select>
+            <option>Polska</option>
+            <option>Niemcy</option>
+            <option>Francja</option>
+        </select>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- SELECTED -->
+    <!-- ========================= -->
+
+    <section id="selected">
+
+        <h2>selected — opcja domyślna</h2>
+
+        <div class="kod">
+&lt;option selected&gt;Polska&lt;/option&gt;
+        </div>
+
+        <select>
+            <option>Polska</option>
+            <option selected>Niemcy</option>
+            <option>Francja</option>
+        </select>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- TEXTAREA -->
+    <!-- ========================= -->
+
+    <section id="textarea">
+
+        <h2>&lt;textarea&gt; — długi tekst</h2>
+
+        <p class="opis">
+            Służy do wpisywania większej ilości tekstu.
+        </p>
+
+        <div class="kod">
+&lt;textarea rows="5" cols="40"&gt;&lt;/textarea&gt;
+        </div>
+
+        <textarea rows="5" cols="40"
+                  placeholder="Wpisz komentarz..."></textarea>
+
+        <p>
+            <code>rows</code> — liczba wierszy
+        </p>
+
+        <p>
+            <code>cols</code> — szerokość
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PLACEHOLDER -->
+    <!-- ========================= -->
+
+    <section id="placeholder">
+
+        <h2>placeholder — podpowiedź</h2>
+
+        <div class="kod">
+&lt;input type="text" placeholder="Wpisz imię"&gt;
+        </div>
+
+        <input type="text" placeholder="Wpisz imię">
+
+        <p>
+            Tekst znika po rozpoczęciu wpisywania.
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- VALUE -->
+    <!-- ========================= -->
+
+    <section id="value">
+
+        <h2>value — wartość początkowa</h2>
+
+        <div class="kod">
+&lt;input type="text" value="Adam"&gt;
+        </div>
+
+        <input type="text" value="Adam">
+
+        <p>
+            value ustawia wartość, która znajduje się w polu od początku.
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- NAME -->
+    <!-- ========================= -->
+
+    <section id="name">
+
+        <h2>name — nazwa danych</h2>
+
+        <div class="kod">
+&lt;input type="text" name="imie"&gt;
+        </div>
+
+        <p>
+            name określa nazwę danych przesyłanych przez formularz.
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- ID -->
+    <!-- ========================= -->
+
+    <section id="id">
+
+        <h2>id — identyfikator</h2>
+
+        <div class="kod">
+&lt;input type="text" id="imie"&gt;
+        </div>
+
+        <p>
+            id identyfikuje konkretny element.
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- REQUIRED -->
+    <!-- ========================= -->
+
+    <section id="required">
+
+        <h2>required — pole wymagane</h2>
+
+        <div class="kod">
+&lt;input type="text" required&gt;
+        </div>
+
+        <input type="text" required placeholder="To pole jest wymagane">
+
+        <p>
+            Użytkownik musi wypełnić pole przed wysłaniem formularza.
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- MIN MAX -->
+    <!-- ========================= -->
+
+    <section id="minmax">
+
+        <h2>min / max — zakres</h2>
+
+        <div class="kod">
+&lt;input type="number" min="1" max="100"&gt;
+        </div>
+
+        <p>
+            <code>min</code> → minimum
+        </p>
+
+        <p>
+            <code>max</code> → maksimum
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- MINLENGTH MAXLENGTH -->
+    <!-- ========================= -->
+
+    <section id="length">
+
+        <h2>minlength / maxlength — długość tekstu</h2>
+
+        <div class="kod">
+&lt;input type="text" minlength="3" maxlength="20"&gt;
+        </div>
+
+        <p>
+            <code>minlength</code> → minimalna liczba znaków
+        </p>
+
+        <p>
+            <code>maxlength</code> → maksymalna liczba znaków
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- BUTTON -->
+    <!-- ========================= -->
+
+    <section id="button">
+
+        <h2>&lt;button&gt; — przycisk</h2>
+
+        <div class="kod">
+&lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+
+&lt;button type="reset"&gt;Wyczyść&lt;/button&gt;
+        </div>
+
+        <button type="submit">Wyślij</button>
+        <button type="reset">Wyczyść</button>
+
+        <p>
+            <code>submit</code> → wysyła formularz
+        </p>
+
+        <p>
+            <code>reset</code> → resetuje formularz
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- POWTÓRKA -->
+    <!-- ========================= -->
+
+    <section id="powtorka">
+
+        <h2>🔥 NAJWAŻNIEJSZE</h2>
+
+        <div class="kod">
+
+INPUT:
+
+type="text"       → tekst
+type="password"   → hasło
+type="email"      → e-mail
+type="number"     → liczba
+type="date"       → data
+type="radio"      → jedna opcja
+type="checkbox"   → wiele opcji
+type="submit"     → wyślij
+type="reset"      → wyczyść
+
+
+POZOSTAŁE:
+
+&lt;form&gt;      → formularz
+&lt;label&gt;     → opis pola
+&lt;select&gt;    → lista
+&lt;option&gt;    → opcja listy
+&lt;textarea&gt;  → długi tekst
+&lt;button&gt;    → przycisk
+
+
+ATRYBUTY:
+
+name         → nazwa danych
+id           → identyfikator
+for          → łączy label z id
+value        → wartość
+placeholder  → podpowiedź
+required     → pole wymagane
+min          → minimum
+max          → maksimum
+minlength    → minimalna długość
+maxlength    → maksymalna długość
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT WYSZUKIWARKI -->
+    <!-- ========================= -->
+
+    <script>
+
+        function szukaj() {
+
+            let tekst = document
+                .getElementById("search")
+                .value
+                .toLowerCase()
+                .trim();
+
+            let wynik = document.getElementById("wynik");
+
+            if (tekst === "") {
+                wynik.innerHTML = "⚠️ Wpisz czego szukasz.";
+                return;
+            }
+
+            let sekcje = document.querySelectorAll("section");
+
+            for (let sekcja of sekcje) {
+
+                let zawartosc = sekcja.innerText.toLowerCase();
+
+                if (zawartosc.includes(tekst)) {
+
+                    sekcja.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                    wynik.innerHTML =
+                        "✅ Znaleziono: <b>" + tekst + "</b>";
+
+                    return;
+                }
+            }
+
+            wynik.innerHTML =
+                "❌ Nie znaleziono: <b>" + tekst + "</b>";
+        }
+
+
+        // Możesz nacisnąć ENTER zamiast klikać "Szukaj"
+
+        document
+            .getElementById("search")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+                    szukaj();
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>
